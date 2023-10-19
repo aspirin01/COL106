@@ -55,8 +55,7 @@ public class SkipList {
             if(this.head.next.get(i)==this.tail){
                 // System.out.println("empty");
                 // this.head.next.set(i,null);
-                SkipListNode ptr= this.head.next.remove(i);
-                ptr=null;
+                this.head.next.remove(i);
                 // System.out.println(ptr);
                 // this.tail.next.set(i,null);
                 this.height--;

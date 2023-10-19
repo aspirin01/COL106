@@ -25,8 +25,8 @@ public class BalancedBST extends BST {
         // System.out.println(heightDiff);
 
         // here are the four cases of rotation possible: LL, LR, RR, RL
-        // LL case
         if(heightDiff>1){
+            // LL case
             if(key<head.left.value){
                 return cwr(head);
             }
@@ -35,16 +35,17 @@ public class BalancedBST extends BST {
             return cwr(head);
         }
 
-        // RR case
         else if(heightDiff<-1){
+            // RR case
             if(key>head.right.value){
                 return acwr(head);
             }
             // System.out.println(key+" "+ head.right.value);
+            // RL case
             head.right= cwr(head.right);
             return acwr(head);
         }
-        // RL case
+        // no rotation performed
         else{
             return head;
         }
@@ -79,6 +80,7 @@ public class BalancedBST extends BST {
 
     public boolean delete(int key){
         // TO be completed by students
+        // first line deletes the key by using the inherited function delete from BST class, and then a private balancer function is called in order to balance the tree which was deleted.
         if(super.delete(key)==true){
             root=this.deleteBalancer(root);
             return true;
@@ -91,19 +93,14 @@ public class BalancedBST extends BST {
         head.height=Math.max(height2(head.left),height2(head.right))+1;
         int heightDiff = height2(head.left)-height2(head.right);
         // System.out.println(heightDiff);
-
-        // here are the four cases of rotation possible: LL, LR, RR, RL
-        // LL case
         if(heightDiff>1){
             if(height2(head.left)>=0){
                 return cwr(head);
             }
-            // LR case
             head.left = acwr(head.left);
             return cwr(head);
         }
 
-        // RR case
         else if(heightDiff<-1){
             if(height2(head.right)<=0){
                 return acwr(head);
@@ -112,7 +109,6 @@ public class BalancedBST extends BST {
             head.right= cwr(head.right);
             return acwr(head);
         }
-        // RL case
         else{
             return head;
         }

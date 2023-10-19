@@ -26,7 +26,7 @@ public class BST {
             r.right= insertRecn(r.right, num);
         }
         else{
-            System.out.println("Num already exists!");
+            // System.out.println("Num already exists!");
             return r;
         }
         // updating the heights
@@ -101,12 +101,12 @@ public class BST {
             } else if (temp.value < num) {
                 temp = temp.right;
             } else {
-                System.out.println(temp.value + " found");
+                // System.out.println(temp.value + " found");
                 return true;
             }
 
         }
-        System.out.println(num + " not found");
+        // System.out.println(num + " not found");
 
         return false;
     }
